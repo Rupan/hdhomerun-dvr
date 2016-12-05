@@ -7,7 +7,7 @@ set -e
 
 update_conffile()
 {
-    CONF_PATH="/home/hdhr/hdhomerun_record.conf"
+    CONF_PATH="/var/lib/hdhr/hdhomerun_record.conf"
     db_get hdhomerun-dvr/recordings-directory || RET="/recordings"
     if [ ! -f "${CONF_PATH}" ]
     then
@@ -15,11 +15,17 @@ update_conffile()
     else
         sed -i 's#^RecordPath=.*#RecordPath=${RET}#g' ${CONF_PATH}
     fi
+    chown hdhr:hdhr ${CONF_PATH}
+    chmod 644 ${CONF_PATH}
 }
 
 case "$1" in
     configure)
-        adduser --system --group hdhr
+        if ! getent group hdhr >/dev/null; then
+            addgroup --quiet --system scanner
+        fi
+        adduser --system --group --home /var/lib/hdhr hdhr \
+            --quiet --gecos "HDHomeRun DVR service account"
         update_conffile
     ;;
     reconfigure)
