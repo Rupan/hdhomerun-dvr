@@ -7,13 +7,13 @@ set -e
 
 update_conffile()
 {
-    CONF_PATH="/var/lib/hdhr/hdhomerun_record.conf"
-    db_get hdhomerun-dvr/recordings-directory || RET="/recordings"
+    CONF_PATH='/var/lib/hdhr/hdhomerun_record.conf'
+    db_get 'hdhomerun-dvr/recordings-directory' || RET='/recordings'
     if [ ! -f "${CONF_PATH}" ]
     then
         echo "RecordPath=${RET}" > ${CONF_PATH}
     else
-        sed -i 's#^RecordPath=.*#RecordPath=${RET}#g' ${CONF_PATH}
+        sed -i "s#^RecordPath=.*#RecordPath=${RET}#" ${CONF_PATH}
     fi
     chown hdhr:hdhr ${CONF_PATH}
     chmod 644 ${CONF_PATH}
