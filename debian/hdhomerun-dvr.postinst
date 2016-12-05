@@ -22,7 +22,7 @@ update_conffile()
 case "$1" in
     configure)
         if ! getent group hdhr >/dev/null; then
-            addgroup --quiet --system scanner
+            addgroup --quiet --system hdhr
         fi
         adduser --system --group --home /var/lib/hdhr hdhr \
             --quiet --gecos "HDHomeRun DVR service account"
