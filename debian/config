@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Make sure this script fails if any unexpected errors happen
+set -e
+
+# Load debconf library
+. /usr/share/debconf/confmodule
+
+# In which directory should recordings be stored?
+db_input medium hdhomerun-dvr/recordings-directory || true
+db_go

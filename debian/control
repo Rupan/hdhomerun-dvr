@@ -1,0 +1,16 @@
+Source: hdhomerun-dvr
+Section: misc
+Priority: optional
+Maintainer: Michael Mohr <akihana@gmail.com>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.8
+Homepage: https://www.silicondust.com/forum/
+
+Package: hdhomerun-dvr
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: HDHomeRun DVR service for Linux
+ Enter HDHomeRun DVR. Simply put, it’s the software
+ that works with your playback and network storage
+ devices adding the ability to watch, schedule and
+ record Live TV.

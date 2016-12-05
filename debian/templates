@@ -1,0 +1,7 @@
+Template: hdhomerun-dvr/recordings-directory
+Type: string
+Default: /recordings
+Description: In which directory should recordings be stored?
+ Recorded TV shows (MPEG files) will be saved here. Select a
+ location with a lot of free space and which is writable by
+ the 'hdhr' user.

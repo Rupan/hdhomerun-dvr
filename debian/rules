@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/pkg-info.mk
+src_file := hdhomerun_record_linux_$(DEB_VERSION_UPSTREAM)
+sys_postfix := $(shell uname -m | awk -f ./sys_postfix.awk)
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	@[ -f "./$(src_file)" ] || wget http://download.silicondust.com/hdhomerun/$(src_file)
+	dd if=$(src_file) bs=4096 skip=1 | tar -xz hdhomerun_record_$(sys_postfix)
+	mv hdhomerun_record_$(sys_postfix) hdhomerun_record
+	chmod 0755 hdhomerun_record
+
+override_dh_auto_clean:
+	rm -f hdhomerun_record
+
+override_dh_install:
+	dh_install hdhomerun_record /usr/bin
