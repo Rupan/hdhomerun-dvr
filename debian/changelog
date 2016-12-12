@@ -1,3 +1,9 @@
+hdhomerun-dvr (20161206beta1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Michael Mohr <akihana@gmail.com>  Sun, 11 Dec 2016 21:45:51 -0800
+
 hdhomerun-dvr (20161117-1) unstable; urgency=medium
 
   * Initial packaging.
