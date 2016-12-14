@@ -5,8 +5,8 @@ Documentation=man:hdhomerun_record(8)
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/hdhomerun_record start --conf /var/lib/hdhr/hdhomerun_record.conf
-ExecStop=/usr/bin/hdhomerun_record stop --conf /var/lib/hdhr/hdhomerun_record.conf
+ExecStart=/usr/bin/hdhomerun_record start --conf /etc/hdhomerun.conf
+ExecStop=/usr/bin/hdhomerun_record stop --conf /etc/hdhomerun.conf
 Restart=on-failure
 User=hdhr
 Group=hdhr
