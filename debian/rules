@@ -18,3 +18,4 @@ override_dh_auto_clean:
 
 override_dh_install:
 	dh_install hdhomerun_record /usr/bin
+	dh_link /var/lib/hdhr/hdhomerun_record.conf /etc/hdhomerun.conf

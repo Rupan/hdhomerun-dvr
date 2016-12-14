@@ -7,7 +7,7 @@ set -e
 
 update_config_file()
 {
-    CONF_PATH='/etc/hdhomerun.conf'
+    CONF_PATH='/var/lib/hdhr/hdhomerun_record.conf'
     db_get 'hdhomerun-dvr/recordings-directory' || RET='/recordings'
     if [ ! -f "${CONF_PATH}" ]
     then
