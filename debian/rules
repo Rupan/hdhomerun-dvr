@@ -2,7 +2,7 @@
 
 include /usr/share/dpkg/pkg-info.mk
 src_file := hdhomerun_record_linux_$(DEB_VERSION_UPSTREAM)
-sys_postfix := $(shell uname -m | awk -f ./sys_postfix.awk)
+sys_postfix := $(shell ./debian/sys_postfix.py)
 
 %:
 	dh $@
