@@ -1,3 +1,10 @@
+hdhomerun-dvr (20161206beta1-2) unstable; urgency=medium
+
+  * Revise packaging strategy for config file.
+  * Minor update to platform id strategy and systemd unit file.
+
+ -- Michael Mohr <akihana@gmail.com>  Tue, 21 Feb 2017 22:02:11 -0800
+
 hdhomerun-dvr (20161206beta1-1) unstable; urgency=medium
 
   * New upstream release.
