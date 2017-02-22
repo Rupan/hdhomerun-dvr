@@ -2,23 +2,6 @@
 
 set -e
 
-# Source debconf library.
-. /usr/share/debconf/confmodule
-
-update_config_file()
-{
-    CONF_PATH='/var/lib/hdhr/hdhomerun_record.conf'
-    db_get 'hdhomerun-dvr/recordings-directory' || RET='/recordings'
-    if [ ! -f "${CONF_PATH}" ]
-    then
-        echo "RecordPath=${RET}" > ${CONF_PATH}
-    else
-        sed -i "s#^RecordPath=.*#RecordPath=${RET}#" ${CONF_PATH}
-    fi
-    chown hdhr:hdhr ${CONF_PATH}
-    chmod 644 ${CONF_PATH}
-}
-
 case "$1" in
     configure)
         if ! getent group hdhr >/dev/null; then
@@ -26,15 +9,9 @@ case "$1" in
         fi
         adduser --system --group --home /var/lib/hdhr hdhr \
             --quiet --gecos "HDHomeRun DVR service account"
-        update_config_file
-    ;;
-    reconfigure)
-        update_config_file
     ;;
 esac
 
 #DEBHELPER#
-
-db_stop;
 
 exit 0
